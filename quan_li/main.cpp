@@ -20,6 +20,7 @@ int main(){
 		cout<<"7.sua diem cho hoc sinh"<<endl;
 		cout<<"8.tim kiem hoc sinh"<<endl;
 		cout<<"9.hien thi danh sach hoc sinh"<<endl;
+		cout<<"10.sap xep diem"<<endl;
 		cout<<"nhap TH:";cin>>n;
 		if(n==0){
 			int so_luong;
@@ -80,6 +81,9 @@ int main(){
 		else if(n==9){
 			a.HienThiDanhSach();
 		}
+		else if(n==10){
+			a.sap_xep_diem();
+		}
 		
-	}while(n==0||n==1||n==2||n==3||n==4||n==5||n==6||n==7||n==8||n==9);
+	}while(n==0||n==1||n==2||n==3||n==4||n==5||n==6||n==7||n==8||n==9 || n==10);
 }

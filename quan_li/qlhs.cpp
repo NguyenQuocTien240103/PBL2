@@ -183,7 +183,25 @@ void QuanLi::HienThiDanhSach(){
 		}
 	}
 }
-
+void QuanLi::sap_xep_diem(){
+	Node *temp=Head;
+	Node *current=NULL;
+	while(temp!=NULL){
+		current=temp;
+		while(current!=NULL){
+			if(temp->subject.get_diem_trung_binh() >= current->subject.get_diem_trung_binh()){
+				HocSinh a= temp->student;
+				temp->student=current->student;
+				current->student=a;
+				MonHoc b= temp->subject;
+				temp->subject=current->subject;
+				current->subject=b;
+			}
+			current=current->next;
+		}
+		temp=temp->next;	
+	}
+}
 QuanLi::~QuanLi(){
 	Node *temp=Head;
 	while(temp!=NULL){

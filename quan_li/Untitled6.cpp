@@ -256,6 +256,7 @@ class QuanLi{
 		void sua_diem_cho_hoc_sinh(int);
 		void tim_kiem_hoc_sinh(string);
 		void HienThiDanhSach();
+		void sap_xep_diem();
 //		void docFile();
 		~QuanLi();
 };
@@ -445,6 +446,25 @@ void QuanLi::HienThiDanhSach(){
 //	subject.docFile_MonHoc(filein);
 //	a.them_hoc_sinh_vao_cuoi(student,subject);
 //}
+void QuanLi::sap_xep_diem(){
+	Node *temp=Head;
+	Node *current=NULL;
+	while(temp!=NULL){
+		current=temp;
+		while(current!=NULL){
+			if(temp->subject.get_diem_trung_binh() >= current->subject.get_diem_trung_binh()){
+				HocSinh a= temp->student;
+				temp->student=current->student;
+				current->student=a;
+				MonHoc b= temp->subject;
+				temp->subject=current->subject;
+				current->subject=b;
+			}
+			current=current->next;
+		}
+		temp=temp->next;	
+	}
+}
 QuanLi::~QuanLi(){
 	Node *temp=Head;
 	while(temp!=NULL){
@@ -470,6 +490,7 @@ int main(){
 		cout<<"7.sua diem cho hoc sinh"<<endl;
 		cout<<"8.tim kiem hoc sinh"<<endl;
 		cout<<"9.hien thi danh sach hoc sinh"<<endl;
+		cout<<"10.sap xep diem"<<endl;
 		cout<<"nhap TH:";cin>>n;
 		if(n==0){
 			int so_luong;
@@ -530,6 +551,8 @@ int main(){
 		else if(n==9){
 			a.HienThiDanhSach();
 		}
-		
-	}while(n==0||n==1||n==2||n==3||n==4||n==5||n==6||n==7||n==8||n==9);
+		else if(n==10){
+			a.sap_xep_diem();
+		}
+	}while(n==0||n==1||n==2||n==3||n==4||n==5||n==6||n==7||n==8||n==9 || n==10);
 }

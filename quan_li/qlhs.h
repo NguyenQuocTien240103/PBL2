@@ -13,6 +13,6 @@ class QuanLi{
 		void sua_diem_cho_hoc_sinh(int);
 		void tim_kiem_hoc_sinh(string);
 		void HienThiDanhSach();
-		void docFile();
+		void sap_xep_diem();
 		~QuanLi();
 };

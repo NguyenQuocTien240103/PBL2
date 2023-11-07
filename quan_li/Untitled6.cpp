@@ -1,6 +1,7 @@
 #include<iostream>
 #include<cstring>
 #include<fstream>
+#include<iomanip>
 using namespace std;
 class HocSinh{
 	private:
@@ -204,7 +205,7 @@ void MonHoc::xuatdiem(){
 	cout<<"tin:"<<this->tin<<endl;
 	double tb=get_diem_trung_binh();
 	set_diem_trung_binh(tb);
-	cout<<"diem trung binh:"<<this->diemtrungbinh<<endl;
+	cout<<"diem trung binh:"<<setprecision(1) << fixed<<this->diemtrungbinh<<endl;
 	string hl =get_hoc_luc();
 	set_hoc_luc(hl);
 	cout<<"hoc luc:"<<this->hocluc<<endl;
@@ -413,6 +414,7 @@ void QuanLi::sua_diem_cho_hoc_sinh(int pos){
 void QuanLi::tim_kiem_hoc_sinh(string ten){
 	int count=0;
 	Node*temp=Head;
+
 	while(temp!=NULL){
 		if(temp->student.get_ten().compare(ten) == 0){
 			count++; // danh dau 
@@ -431,13 +433,14 @@ void QuanLi::tim_kiem_hoc_sinh(string ten){
 void QuanLi::HienThiDanhSach(){
 	Node *temp=Head;
 	if(temp==NULL)
-		cout<<"danh sach rong"<<endl;
+		cout<<"DANH SACH RONG"<<endl;
 	else{
-		cout<<"danh sach hoc sinh"<<endl;
+		cout<<"\t\t\t\t\t\t*****DANH SACH HOC SINH*****"<<endl;
 		while(temp!=NULL){
 			temp->student.xuat_thong_tin();
 			temp->subject.xuatdiem();
 			temp=temp->next;
+			cout<<endl;
 		}
 	}
 }
@@ -474,24 +477,40 @@ QuanLi::~QuanLi(){
 	}
 	Head=NULL;
 }
+void gioi_thieu(){
+	cout<<"\t\t\t....................................................................\n";
+	cout<<"\t\t\t.                                                                  .\n";
+	cout<<"\t\t\t.               PBL2: QUAN LI DIEM HOC SINH THPT                   .\n";
+	cout<<"\t\t\t.                                                                  .\n";
+	cout<<"\t\t\t....................................................................\n";
+	cout<<"\t\t\t.                                                                  .\n";
+	cout<<"\t\t\t.               NGUYEN QUOC TIEN    MSSV:102220043                 .\n";
+	cout<<"\t\t\t.               PHAM QUOC VU        MSSV:102220050                 .\n";
+	cout<<"\t\t\t.               GVHD: TS. TRUONG NGOC CHAU                         .\n";
+	cout<<"\t\t\t....................................................................\n";
+	cout<<endl;
+
+}
 int main(){
 	QuanLi a;
 	HocSinh student;
 	MonHoc subject;
 	int n;
 	do{
-		cout<<"0.them file vao danh sach"<<endl;
-		cout<<"1.them hoc sinh vao dau danh sach"<<endl;
-		cout<<"2.them hoc sinh vao cuoi danh sach"<<endl;
-		cout<<"3.them hoc sinh vao vi tri bat ki"<<endl;
-		cout<<"4.xoa hoc sinh o dau danh sach"<<endl;
-		cout<<"5.xoa hoc sinh o cuoi danh sach"<<endl;
-		cout<<"6.xoa hoc sinh o vi tri bat ki"<<endl;
-		cout<<"7.sua diem cho hoc sinh"<<endl;
-		cout<<"8.tim kiem hoc sinh"<<endl;
-		cout<<"9.hien thi danh sach hoc sinh"<<endl;
-		cout<<"10.sap xep diem"<<endl;
-		cout<<"nhap TH:";cin>>n;
+		gioi_thieu();
+		cout<<"------------------------------------------------CAC LUA CHON DE QUAN LI-------------------------------------------------\n\n";
+		cout<<"\t\t\t\t\t0.them file vao danh sach"<<endl;
+		cout<<"\t\t\t\t\t1.them hoc sinh vao dau danh sach"<<endl;
+		cout<<"\t\t\t\t\t2.them hoc sinh vao cuoi danh sach"<<endl;
+		cout<<"\t\t\t\t\t3.them hoc sinh vao vi tri bat ki"<<endl;
+		cout<<"\t\t\t\t\t4.xoa hoc sinh o dau danh sach"<<endl;
+		cout<<"\t\t\t\t\t5.xoa hoc sinh o cuoi danh sach"<<endl;
+		cout<<"\t\t\t\t\t6.xoa hoc sinh o vi tri bat ki"<<endl;
+		cout<<"\t\t\t\t\t7.sua diem cho hoc sinh"<<endl;
+		cout<<"\t\t\t\t\t8.tim kiem hoc sinh"<<endl;
+		cout<<"\t\t\t\t\t9.hien thi danh sach hoc sinh"<<endl;
+		cout<<"\t\t\t\t\t10.sap xep diem"<<endl;
+		cout<<"\t\t\t\t\tNhap TH:";cin>>n;
 		if(n==0){
 			int so_luong;
 			ifstream filein1,filein2,filein3;
@@ -504,16 +523,19 @@ int main(){
 			subject.docFile_MonHoc(filein2);
 			a.them_hoc_sinh_vao_cuoi(student,subject);
 			}
+			system("cls");
 		}
 		else if(n==1){
 			student.nhapthongtin();
 			subject.nhapdiem();
 			a.them_hoc_sinh_vao_dau(student,subject);
+			system("cls");
 		}
 		else if(n==2){
 			student.nhapthongtin();
 			subject.nhapdiem();
 			a.them_hoc_sinh_vao_cuoi(student,subject);
+			system("cls");
 		}
 		else if(n==3){
 			int pos;
@@ -522,24 +544,31 @@ int main(){
 			student.nhapthongtin();
 			subject.nhapdiem();
 			a.them_hoc_sinh_vao_vi_tri_bat_ki(student,subject,pos);
+			system("cls");
 		}
 		else if(n==4){
 			a.xoa_hoc_sinh_o_vi_tri_dau_tien();
+			system("cls");
 		}
 		else if(n==5){
 			a.xoa_hoc_sinh_o_vi_tri_cuoi_cung();
+			system("cls");
 		}
 		else if(n==6){
 			int pos;
 			cout<<"nhap vi tri can xoa:"; cin>>pos;
 			a.xoa_hoc_sinh_o_vi_tri_bat_ki(pos);
+			system("cls");
 		}
 		else if(n==7){
 			int pos;
 			cout<<"nhap vi tri can sua diem cho hoc sinh:";cin>>pos;
 			a.sua_diem_cho_hoc_sinh(pos);
+			system("cls");
+
 		}
 		else if(n==8){
+			system("cls");
 			string name;
 			cout<<"tim kiem hoc sinh bang cach loc ten"<<endl;
 			cout<<"nhap ten hoc sinh ma` ban muon tim` kiem:";
@@ -549,10 +578,17 @@ int main(){
 			a.tim_kiem_hoc_sinh(name);
 		}
 		else if(n==9){
+			system("cls");
 			a.HienThiDanhSach();
 		}
 		else if(n==10){
 			a.sap_xep_diem();
+			system("cls");
+
+		}
+		else{
+			system("cls");
+			cout<<"TH ban vua nhap nam ngoai cac lua chon tren!!!"<<endl;
 		}
 	}while(n==0||n==1||n==2||n==3||n==4||n==5||n==6||n==7||n==8||n==9 || n==10);
 }

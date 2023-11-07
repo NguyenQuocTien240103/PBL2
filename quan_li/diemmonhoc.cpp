@@ -1,6 +1,7 @@
 #include<iostream>
 #include<fstream>
 #include"diemmonhoc.h"
+#include<iomanip>
 using namespace std;
 
 MonHoc::MonHoc(){}
@@ -105,7 +106,7 @@ void MonHoc::xuatdiem(){
 	cout<<"tin:"<<this->tin<<endl;
 	double tb=get_diem_trung_binh();
 	set_diem_trung_binh(tb);
-	cout<<"diem trung binh:"<<this->diemtrungbinh<<endl;
+	cout<<"diem trung binh:"<<setprecision(1) << fixed<<this->diemtrungbinh<<endl;
 	string hl =get_hoc_luc();
 	set_hoc_luc(hl);
 	cout<<"hoc luc:"<<this->hocluc<<endl;

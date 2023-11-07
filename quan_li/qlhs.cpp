@@ -173,13 +173,14 @@ void QuanLi::tim_kiem_hoc_sinh(string ten){
 void QuanLi::HienThiDanhSach(){
 	Node *temp=Head;
 	if(temp==NULL)
-		cout<<"danh sach rong"<<endl;
+		cout<<"DANH SACH RONG"<<endl;
 	else{
-		cout<<"danh sach hoc sinh"<<endl;
+		cout<<"\t\t\t\t\t\t*****DANH SACH HOC SINH*****"<<endl;
 		while(temp!=NULL){
 			temp->student.xuat_thong_tin();
 			temp->subject.xuatdiem();
 			temp=temp->next;
+			cout<<endl;
 		}
 	}
 }

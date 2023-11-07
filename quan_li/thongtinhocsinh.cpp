@@ -44,9 +44,9 @@ void HocSinh::xuat_thong_tin(){
 }
 
 void HocSinh::docFile_hocsinh(ifstream& filein){
-	filein.ignore();
 	getline(filein,this->ten);
 	filein>>this->ngaysinh;
 	filein>>this->lop;
+	filein.ignore();
 }
 HocSinh::~HocSinh(){}

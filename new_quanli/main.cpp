@@ -65,15 +65,18 @@ int main(){
 			HocSinh student;
 			student.nhapthongtin();
 			list_hoc_sinh.push_back(student);
+			system("cls");
 		}
 		else if(n==2){
 			MonHoc subject;
 			subject.nhapdiem();
 			list_mon_hoc.push_back(subject);
+			system("cls");
 		}
 		else if(n==3){
 			int x;
 			cout<<"nhap id cua hoc sinh ma ban muon hien thi : "; cin>>x;
+			system("cls");
 			for(HocSinh a: list_hoc_sinh){
 				if(a.get_id()==x){
 					a.xuat_thong_tin();
@@ -83,6 +86,7 @@ int main(){
 		else if(n==4){
 			int x;
 			cout<<"nhap id cua hoc sinh ma ban muon hien thi : ";cin>>x;
+			system("cls");
 			for(MonHoc a: list_mon_hoc){
 				if(a.get_id()==x){
 					a.xuatdiem();
@@ -92,6 +96,7 @@ int main(){
 		else if(n==5){
 			int x;
 			cout<<"nhap id cua hoc sinh ma ban muon hien thi : "; cin>>x;
+			system("cls");
 			HocSinh student;
 			for(HocSinh a: list_hoc_sinh){
 				if(a.get_id()==x){
@@ -127,6 +132,7 @@ int main(){
 				}
 			}
 			quanli.them_hoc_sinh_vao_dau(student,subject);
+			system("cls");
 		}
 		else if(n==7){
 				int x;
@@ -146,6 +152,7 @@ int main(){
 				}
 			}
 			quanli.them_hoc_sinh_vao_cuoi(student,subject);
+			system("cls");
 		}
 		else if(n==8){
 			int x,pos;
@@ -166,84 +173,48 @@ int main(){
 			}
 			cout<<"nhap vi tri ma ban muon them vao:";cin>>pos;
 			quanli.them_hoc_sinh_vao_vi_tri_bat_ki(student,subject,pos);
+			system("cls");
 		}
 		else if(n==9){
-			int x;
-			//cout<<"nhap id cua hoc sinh ma ban muon xoa o dau : "; cin>>x;
-			HocSinh student;
-			for(HocSinh a: list_hoc_sinh){
-				if(a.get_id()==x){
-					student=a;
-					break;
-				}
-			}
-			MonHoc subject;
-			for(MonHoc a: list_mon_hoc){
-				if(a.get_id()==x){
-					subject=a;
-					break;
-				}
-			}
 			quanli.xoa_hoc_sinh_o_vi_tri_dau_tien();
+			system("cls");
 		}
-		else if(n==10){
-			int x;
-			//cout<<"nhap id cua hoc sinh ma ban muon xoa o cuoi : "; cin>>x;
-			HocSinh student;
-			for(HocSinh a: list_hoc_sinh){
-				if(a.get_id()==x){
-					student=a;
-					break;
-				}
-			}
-			MonHoc subject;
-			for(MonHoc a: list_mon_hoc){
-				if(a.get_id()==x){
-					subject=a;
-					break;
-				}
-			}
+		else if(n==10){		
 			quanli.xoa_hoc_sinh_o_vi_tri_cuoi_cung();
+			system("cls");
 		}
 		else if(n==11){
-			int x,pos;
-			//cout<<"nhap id cua hoc sinh ma ban muon xoa o vi tri bat ki : "; cin>>x;
-			HocSinh student;
-			for(HocSinh a: list_hoc_sinh){
-				if(a.get_id()==x){
-					student=a;
-					break;
-				}
-			}
-			MonHoc subject;
-			for(MonHoc a: list_mon_hoc){
-				if(a.get_id()==x){
-					subject=a;
-					break;
-				}
-			}
-			cout<<"nhap vi tri ma ban muon xoa vao:";cin>>pos;
-			quanli.xoa_hoc_sinh_o_vi_tri_bat_ki(pos);
+			int x;
+			cout<<"nhap id cua hoc sinh ma ban muon xoa:";cin>>x;
+			quanli.xoa_hoc_sinh_o_vi_tri_bat_ki(x);
+			system("cls");
 		}
 		else if(n==12){
-			int pos;
-			cout<<"nhap vi tri can sua diem cho hoc sinh"; cin>>pos;
-			quanli.sua_diem_cho_hoc_sinh(pos);
+			int x;
+			cout<<"nhap id cua hoc sinh can sua diem:"; cin>>x;
+			quanli.sua_diem_cho_hoc_sinh(x);
+			system("cls");
 		}
 		else if(n==13){
-			string name;
-			cout<<"tim kiem hoc sinh ban cach loc ten"<<endl;
-			cout<<"nhap ten hoc sinh ma` ban muon tim` kiem:";
-			cin.ignore();
-			getline(cin,name);
+			system("cls");
+			int ID;
+			cout<<"tim kiem hoc sinh ban cach tim id "<<endl;
+			cout<<"nhap id cua hoc sinh ma` ban muon tim` kiem:";
+			cin>>ID;
 			cout<<"thong tin hoc sinh ma` ban tim kiem la:"<<endl;
-			quanli.tim_kiem_hoc_sinh(name);
+			quanli.tim_kiem_hoc_sinh(ID);
 		}
 		else if(n==14){
 			quanli.sap_xep_diem();
+			system("cls");
 		}
 		else if(n==15){
+			system("cls");
 			quanli.HienThiDanhSach();
+		}
+		else{
+			system("cls");
+			cout<<"TH ban vua nhap nam ngoai cac lua chon tren!!!"<<endl;
 		}
 
 	}while(n==0||n==1||n==2||n==3 ||n==4 ||n==5 || n==6 || n==7 ||n==8||n==9||n==10||n==11|n==12||n==13||n==14||n==15);

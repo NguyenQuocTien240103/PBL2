@@ -81,35 +81,38 @@ void QuanLi::xoa_hoc_sinh_o_vi_tri_cuoi_cung(){
 	delete temp;
 }
 
-void QuanLi::xoa_hoc_sinh_o_vi_tri_bat_ki(int pos){
-	int k=dem_so_luong_hoc_sinh();
-	if(pos<1||pos>k){
-		cout<<"vi tri xoa khong hop le";
-	}
-	else if(pos==1){
-		xoa_hoc_sinh_o_vi_tri_dau_tien();
-	}
-	else{
-		Node*temp=Head;
-		Node*current=NULL;
-		for(int i=1;i<pos;i++){
+void QuanLi::xoa_hoc_sinh_o_vi_tri_bat_ki(int id){
+	int count=1;
+	Node*temp=Head;
+	Node*current=NULL;
+	while(1){
+		if(temp->student.get_id()==id){
+			break;
+		}
+		else{
 			current=temp;
 			temp=temp->next;
+			count++;
 		}
-		current->next=temp->next;
-		delete temp;
 	}
-}
-
-void QuanLi::sua_diem_cho_hoc_sinh(int pos){
-	int k=dem_so_luong_hoc_sinh();
-	if(pos<1||pos>k){
-		cout<<"vi tri can sua diem khong ton tai"<<endl;
+	if(count==1){
+		Head=Head->next;
 	}
 	else{
+		current->next=temp->next;
+	}
+	delete temp;
+}
+
+void QuanLi::sua_diem_cho_hoc_sinh(int id){
 		Node*temp=Head;
-		for(int i=1;i<pos;i++){
-			temp=temp->next;
+		while(1){
+			if(temp->student.get_id()==id){
+				break;
+			}
+			else{
+				temp=temp->next;
+			}
 		}
 		int n;
 		cout<<"1.sua diem toan"<<endl;
@@ -149,14 +152,14 @@ void QuanLi::sua_diem_cho_hoc_sinh(int pos){
 			cout<<"so diem tin can sua la:"; cin>>a;
 			temp->subject.set_tin(a);
 		}
-	}
 }
 
-void QuanLi::tim_kiem_hoc_sinh(string ten){
+
+void QuanLi::tim_kiem_hoc_sinh(int  id){
 	int count=0;
 	Node*temp=Head;
 	while(temp!=NULL){
-		if(temp->student.get_ten().compare(ten) == 0){
+		if(temp->student.get_id() == id){
 			count++; // danh dau 
 			temp->student.xuat_thong_tin();
 			temp->subject.xuatdiem();
@@ -165,18 +168,20 @@ void QuanLi::tim_kiem_hoc_sinh(string ten){
 
 	}
 	if(count==0){
-		cout<<"khong co hoc sinh nao giong ten ban da nhap!!!"<<endl;
+		cout<<"khong co hoc sinh nao giong id ban da nhap!!!"<<endl;
 		return;
 	}
 }
 
 void QuanLi::HienThiDanhSach(){
+	int count=0;
 	Node *temp=Head;
 	if(temp==NULL)
 		cout<<"DANH SACH RONG"<<endl;
 	else{
 		cout<<"\t\t\t\t\t\t*****DANH SACH HOC SINH*****"<<endl;
 		while(temp!=NULL){
+			cout<<"STT:"<<++count<<endl;
 			temp->student.xuat_thong_tin();
 			temp->subject.xuatdiem();
 			temp=temp->next;

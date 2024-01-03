@@ -2,6 +2,7 @@
 #include<fstream>
 #include"monhoc.h"
 #include<iomanip>
+#include<cmath>
 using namespace std;
 
 MonHoc::MonHoc(){}
@@ -16,14 +17,15 @@ MonHoc::MonHoc(double toan,double li,double hoa,double van,double anh,double tin
     this->id=id;
 }
 
-void MonHoc::nhapdiem(){ 
-    cout<<"nhap id cua hoc sinh do: "; cin>>this->id;
-	cout<<"nhap diem toan: "; cin>>this->toan;
-	cout<<"nhap diem li: "; cin>>this->li;
-	cout<<"nhap diem hoa: "; cin>>this->hoa;
-	cout<<"nhap diem van: "; cin>>this->van;
-	cout<<"nhap diem anh: "; cin>>this->anh;
-	cout<<"nhap diem tin: "; cin>>this->tin;
+void MonHoc::nhapdiem(int x){
+    // cout<<"Nhap id cua hoc sinh do: "; cin>>this->id;
+	this->id=x;
+	cout<<"Nhap diem toan: "; cin>>this->toan;
+	cout<<"Nhap diem li: "; cin>>this->li;
+	cout<<"Nhap diem hoa: "; cin>>this->hoa;
+	cout<<"Nhap diem van: "; cin>>this->van;
+	cout<<"Nhap diem anh: "; cin>>this->anh;
+	cout<<"Nhap diem tin: "; cin>>this->tin;
 }
 
 double MonHoc::get_toan(){
@@ -112,7 +114,8 @@ void MonHoc::xuatdiem(){
 	cout<<"van:"<<this->van<<endl;
 	cout<<"anh:"<<this->anh<<endl;
 	cout<<"tin:"<<this->tin<<endl;
-	double tb=get_diem_trung_binh();
+	double tb=round(get_diem_trung_binh()*10)/10;
+	// double rounded_tb = round(tb * 10) / 10;
 	set_diem_trung_binh(tb);
 	cout<<"diem trung binh:"<<setprecision(1) << fixed<<this->diemtrungbinh<<endl;
 	string hl =get_hoc_luc();

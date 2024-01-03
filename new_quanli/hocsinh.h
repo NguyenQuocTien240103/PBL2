@@ -11,7 +11,7 @@ class HocSinh{
 		string get_ten();
 		string get_ngaysinh();
 		int get_id();
-		void nhapthongtin();
+		void nhapthongtin(int);
 		void set_ten(string);
 		void set_ngaysinh(string);
 		void set_id(int);

@@ -22,8 +22,8 @@ string HocSinh::get_ngaysinh(){
 int HocSinh::get_id(){
 	return this->id;
 }
-void HocSinh::nhapthongtin(){
-	cout<<"nhap id cua hoc sinh do: ";cin>>this->id;
+void HocSinh::nhapthongtin(int x){
+	this->id=x;
 	cin.ignore();
 	cout<<"nhap ten hoc sinh: "; getline(cin,this->ten);
 	cout<<"nhap ngay sinh cua hoc sinh: "; cin>>this->ngaysinh;
@@ -45,10 +45,12 @@ void HocSinh::xuat_thong_tin(){
 }
 
 void HocSinh::docFile_hocsinh(ifstream& filein){
-    filein>>this->id;
-	filein.ignore();
-	getline(filein,this->ten);
-	filein>>this->ngaysinh;
-	
+    // filein>>this->id;
+	// filein.ignore();
+	// getline(filein,this->ten);
+	// filein>>this->ngaysinh;
+	filein >> this->id;
+   	getline(filein, this->ten,',');
+	getline(filein, this->ngaysinh);
 }
 HocSinh::~HocSinh(){}

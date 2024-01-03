@@ -10,7 +10,7 @@ class MonHoc{
 	public:
 		MonHoc();
 		MonHoc(double,double,double,double,double,double,int);
-		void nhapdiem();
+		void nhapdiem(int);
 		double get_toan();
 		double get_li();
 		double get_hoa();

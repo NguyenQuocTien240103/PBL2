@@ -106,7 +106,7 @@ void QuanLi::xoa_hoc_sinh_o_vi_tri_bat_ki(int id){
 
 void QuanLi::sua_diem_cho_hoc_sinh(int id){
 		Node*temp=Head;
-		while(1){
+		while(temp!=NULL){
 			if(temp->student.get_id()==id){
 				break;
 			}
@@ -114,44 +114,51 @@ void QuanLi::sua_diem_cho_hoc_sinh(int id){
 				temp=temp->next;
 			}
 		}
+		if(temp==NULL){
+			cout<<"ID khong ton tai"<<endl;
+		}
+		else{
 		int n;
-		cout<<"1.sua diem toan"<<endl;
-		cout<<"2.sua diem li"<<endl;
-		cout<<"3.sua diem hoa"<<endl;
-		cout<<"4.sua diem van"<<endl;
-		cout<<"5.sua diem anh"<<endl;
-		cout<<"6.sua diem tin"<<endl;
-		cout<<"nhap TH can sua:"; cin>>n;
+		cout<<endl;
+		cout<<"\t\t\t1.Sua diem toan"<<endl;
+		cout<<"\t\t\t2.Sua diem li"<<endl;
+		cout<<"\t\t\t3.Sua diem hoa"<<endl;
+		cout<<"\t\t\t4.Sua diem van"<<endl;
+		cout<<"\t\t\t5.Sua diem anh"<<endl;
+		cout<<"\t\t\t6.Sua diem tin"<<endl;
+		cout<<"\t\t\tNhap TH can sua:"; cin>>n;
+		cout<<endl;
 		if(n==1){
 			double a;
-			cout<<"so diem toan can sua la:"; cin>>a;
+			cout<<"So diem toan can sua la:"; cin>>a;
 			temp->subject.set_toan(a);
 		}
 		if(n==2){
 			double a;
-			cout<<"so diem li can sua la:"; cin>>a;
+			cout<<"So diem li can sua la:"; cin>>a;
 			temp->subject.set_li(a);
 		}
 		if(n==3){
 			double a;
-			cout<<"so diem hoa can sua la:"; cin>>a;
+			cout<<"So diem hoa can sua la:"; cin>>a;
 			temp->subject.set_hoa(a);
 		}
 		if(n==4){
 			double a;
-			cout<<"so diem van can sua la:"; cin>>a;
+			cout<<"So diem van can sua la:"; cin>>a;
 			temp->subject.set_van(a);
 		}
 		if(n==5){
 			double a;
-			cout<<"so diem anh can sua la:"; cin>>a;
+			cout<<"So diem anh can sua la:"; cin>>a;
 			temp->subject.set_anh(a);
 		}
 		if(n==6){
 			double a;
-			cout<<"so diem tin can sua la:"; cin>>a;
+			cout<<"So diem tin can sua la:"; cin>>a;
 			temp->subject.set_tin(a);
 		}
+	}
 }
 
 
@@ -168,16 +175,21 @@ void QuanLi::tim_kiem_hoc_sinh(int  id){
 
 	}
 	if(count==0){
-		cout<<"khong co hoc sinh nao giong id ban da nhap!!!"<<endl;
+		cout<<"Khong co hoc sinh nao giong ID ban da nhap!!!"<<endl;
 		return;
 	}
+	cout<<endl;
 }
 
 void QuanLi::HienThiDanhSach(){
 	int count=0;
 	Node *temp=Head;
-	if(temp==NULL)
+	if(temp==NULL){
+		cout<<"\t\t\t\t\t\t*****DANH SACH HOC SINH*****"<<endl;
 		cout<<"DANH SACH RONG"<<endl;
+		cout<<endl;
+	
+	}
 	else{
 		cout<<"\t\t\t\t\t\t*****DANH SACH HOC SINH*****"<<endl;
 		while(temp!=NULL){

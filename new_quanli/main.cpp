@@ -1,11 +1,8 @@
 #include<iostream>
-#include"hocsinh.cpp"
-#include"monhoc.cpp"
-#include"node.cpp"
+#include<windows.h>
 #include"quanli.cpp"
 #include<vector>
 #include<fstream>
-#include<windows.h>
 using namespace std;
 void gioi_thieu(){
 	HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
@@ -58,31 +55,39 @@ int main(){
 			cout<<"\t\t\t\t\t12.Sua diem cho hoc sinh"<<endl;
 			cout<<"\t\t\t\t\t13.Tim kiem hoc sinh"<<endl;
 			cout<<"\t\t\t\t\t14.Sap xep diem"<<endl;
-			cout<<"\t\t\t\t\nNhap TH:"; cin>>n;
+			cout<<"\t\t\t\t\tNhap TH:"; cin>>n;
 			SetConsoleTextAttribute(hConsole, FOREGROUND_INTENSITY);
 			if(n==0){
 				ifstream filein1,filein2,filein3;
-				filein1.open("thongtinhocsinh.txt");
-				filein2.open("diemmonhoc.txt");
-				filein3.open("so_luong.txt");
+				filein1.open("../new_data/thongtinhocsinh.txt");
+				filein2.open("../new_data/diemmonhoc.txt");
+				filein3.open("../new_data/so_luong.txt");
 				int soluong;
 				filein3>>soluong;
-				HocSinh student;
-				MonHoc subject;
+				HocSinh student_file;
+				MonHoc subject_file;
+                vector<HocSinh> list_file_hoc_sinh;
+	            vector<MonHoc> list_file_mon_hoc;
+            
 				for(int i=0;i<soluong;i++){
-					student.docFile_hocsinh(filein1);
-					list_hoc_sinh.push_back(student);
-					subject.docFile_MonHoc(filein2);
-					list_mon_hoc.push_back(subject);
+					student_file.docFile_hocsinh(filein1);
+					list_file_hoc_sinh.push_back(student_file);
+					subject_file.docFile_MonHoc(filein2);
+					list_file_mon_hoc.push_back(subject_file);
 					// quanli.them_hoc_sinh_vao_cuoi(list_hoc_sinh[i],list_mon_hoc[i]);
 				}
 				for(int i=0;i<soluong;i++){
 					for(int j=0;j<soluong;j++){
-						if(list_hoc_sinh[i].get_id()==list_mon_hoc[j].get_id()){
-							quanli.them_hoc_sinh_vao_cuoi(list_hoc_sinh[i],list_mon_hoc[j]);
+						if(list_file_hoc_sinh[i].get_id()==list_file_mon_hoc[j].get_id()){
+							quanli.them_hoc_sinh_vao_cuoi(list_file_hoc_sinh[i],list_file_mon_hoc[j]);
 						}
 					}
 				
+				}
+                for(int i=0;i<soluong;i++){
+					list_hoc_sinh.push_back(list_file_hoc_sinh[i]);
+					list_mon_hoc.push_back(list_file_mon_hoc[i]);
+					
 				}
 				system("cls");
 			}
@@ -141,7 +146,6 @@ int main(){
 				system("cls");
 				int x;
 				cout<<"Nhap ID cua hoc sinh ma ban muon hien thi : ";cin>>x;
-				
 				for(MonHoc a: list_mon_hoc){
 					if(a.get_id()==x){
 						a.xuatdiem();

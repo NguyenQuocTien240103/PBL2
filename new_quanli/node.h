@@ -1,6 +1,6 @@
 #include<iostream>
-// #include "hocsinh.h"
-// #include "monhoc.h"
+#include "hocsinh.cpp"
+#include "monhoc.cpp"
 using namespace std;
 class Node{
 	public:

@@ -1,5 +1,5 @@
 #include<iostream>
-// #include "node.h"
+#include "node.cpp"
 using namespace std;
 class QuanLi{
 	private:

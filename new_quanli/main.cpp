@@ -30,6 +30,8 @@ int main(){
 	int n;
 	int x;
 	HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+	ofstream fileout;
+	fileout.open("output.txt");
 	do{
 		SetConsoleTextAttribute(hConsole,FOREGROUND_BLUE | FOREGROUND_INTENSITY);
 		cout<<"----------LUA CHON---------"<<endl;
@@ -138,7 +140,7 @@ int main(){
 				
 				for(HocSinh a: list_hoc_sinh){
 					if(a.get_id()==x){
-						a.xuat_thong_tin();
+						a.xuat_thong_tin(fileout);
 					}
 				}
 			}
@@ -148,22 +150,22 @@ int main(){
 				cout<<"Nhap ID cua hoc sinh ma ban muon hien thi : ";cin>>x;
 				for(MonHoc a: list_mon_hoc){
 					if(a.get_id()==x){
-						a.xuatdiem();
+						a.xuatdiem(fileout);
 					}
 				}
 			}
 			else if(n==5){
 				system("cls");
-				cout<<"cac id da nhap thong tin:"<<endl;
+				fileout<<"cac id da nhap thong tin:"<<endl;
 				for(int i=0;i<list_hoc_sinh.size();i++){
-					cout<<list_hoc_sinh[i].get_id()<<" ";
+					fileout<<list_hoc_sinh[i].get_id()<<" ";
 				}
-				cout<<endl;
-				cout<<"cac id da nhap diem:"<<endl;
+				fileout<<endl;
+				fileout<<"cac id da nhap diem:"<<endl;
 				for(int i=0;i<list_mon_hoc.size();i++){
-					cout<<list_mon_hoc[i].get_id()<<" ";
+					fileout<<list_mon_hoc[i].get_id()<<" ";
 				}
-				cout<<endl;
+				fileout<<endl;
 			}
 			else if(n==6){
 				system("cls");
@@ -275,7 +277,7 @@ int main(){
 				cout<<"Nhap ID cua hoc sinh ma` ban muon tim` kiem:";
 				cin>>ID;
 				cout<<"\t\t\t\t\t\t*****THONG TIN HOC SINH BAN VUA TIM KIEM LA*****"<<endl;
-				quanli.tim_kiem_hoc_sinh(ID);
+				quanli.tim_kiem_hoc_sinh(ID,fileout);
 			}
 			else if(n==14){
 				system("cls");
@@ -289,7 +291,7 @@ int main(){
 		}
 		else if(x==2){
 			system("cls");
-			quanli.HienThiDanhSach();
+			quanli.HienThiDanhSach(fileout);
 		}
 	}while(x==1 || x==2);
 }

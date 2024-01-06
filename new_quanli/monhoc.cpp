@@ -107,20 +107,20 @@ void MonHoc::set_hoc_luc(string hocluc){
 	this->hocluc=hocluc;
 }
 
-void MonHoc::xuatdiem(){
-	cout<<"toan:"<<this->toan<<endl;
-	cout<<"li:"<<this->li<<endl;
-	cout<<"hoa:"<<this->hoa<<endl;
-	cout<<"van:"<<this->van<<endl;
-	cout<<"anh:"<<this->anh<<endl;
-	cout<<"tin:"<<this->tin<<endl;
+void MonHoc::xuatdiem(ofstream& fileout){
+	fileout<<"toan:"<<this->toan<<endl;
+	fileout<<"li:"<<this->li<<endl;
+	fileout<<"hoa:"<<this->hoa<<endl;
+	fileout<<"van:"<<this->van<<endl;
+	fileout<<"anh:"<<this->anh<<endl;
+	fileout<<"tin:"<<this->tin<<endl;
 	double tb=round(get_diem_trung_binh()*10)/10;
 	// double rounded_tb = round(tb * 10) / 10;
 	set_diem_trung_binh(tb);
-	cout<<"diem trung binh:"<<setprecision(1) << fixed<<this->diemtrungbinh<<endl;
+	fileout<<"diem trung binh:"<<setprecision(1) << fixed<<this->diemtrungbinh<<endl;
 	string hl =get_hoc_luc();
 	set_hoc_luc(hl);
-	cout<<"hoc luc:"<<this->hocluc<<endl;
+	fileout<<"hoc luc:"<<this->hocluc<<endl;
 }
 void MonHoc::docFile_MonHoc(ifstream& filein){
     filein>>this->id;

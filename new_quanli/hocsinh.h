@@ -15,7 +15,7 @@ class HocSinh{
 		void set_ten(string);
 		void set_ngaysinh(string);
 		void set_id(int);
-		void xuat_thong_tin();
+		void xuat_thong_tin(ofstream&);
 		~HocSinh();
 		void docFile_hocsinh(ifstream&);
 };

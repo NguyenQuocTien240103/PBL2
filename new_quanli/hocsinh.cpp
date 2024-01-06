@@ -38,10 +38,10 @@ void HocSinh::set_ngaysinh(string ngaysinh){
 void HocSinh::set_ten(string ten){
 	this->ten=ten;
 }
-void HocSinh::xuat_thong_tin(){
-	cout<<"id:"<<this->id<<endl;
-	cout<<"ten:"<<this->ten<<endl;
-	cout<<"ngaysinh:"<<this->ngaysinh<<endl;
+void HocSinh::xuat_thong_tin(ofstream& fileout){
+	fileout<<"id:"<<this->id<<endl;
+	fileout<<"ten:"<<this->ten<<endl;
+	fileout<<"ngaysinh:"<<this->ngaysinh<<endl;
 }
 
 void HocSinh::docFile_hocsinh(ifstream& filein){

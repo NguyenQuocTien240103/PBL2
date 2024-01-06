@@ -29,7 +29,7 @@ class MonHoc{
 		void set_diem_trung_binh(double);
 		void set_hoc_luc(string);
         void set_id(int);
-		void xuatdiem();
+		void xuatdiem(ofstream&);
 		~MonHoc();
 		void docFile_MonHoc(ifstream&);
 };

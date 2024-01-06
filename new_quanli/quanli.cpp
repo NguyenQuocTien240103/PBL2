@@ -162,14 +162,14 @@ void QuanLi::sua_diem_cho_hoc_sinh(int id){
 }
 
 
-void QuanLi::tim_kiem_hoc_sinh(int  id){
+void QuanLi::tim_kiem_hoc_sinh(int  id,ofstream &fileOutput){
 	int count=0;
 	Node*temp=Head;
 	while(temp!=NULL){
 		if(temp->student.get_id() == id){
 			count++; // danh dau 
-			temp->student.xuat_thong_tin();
-			temp->subject.xuatdiem();
+			temp->student.xuat_thong_tin(fileOutput);
+			temp->subject.xuatdiem(fileOutput);
 		}
 		temp=temp->next;
 
@@ -181,23 +181,22 @@ void QuanLi::tim_kiem_hoc_sinh(int  id){
 	cout<<endl;
 }
 
-void QuanLi::HienThiDanhSach(){
+void QuanLi::HienThiDanhSach(ofstream &fileOutput){
 	int count=0;
 	Node *temp=Head;
 	if(temp==NULL){
-		cout<<"\t\t\t\t\t\t*****DANH SACH HOC SINH*****"<<endl;
-		cout<<"DANH SACH RONG"<<endl;
-		cout<<endl;
-	
+		fileOutput<<"\t\t\t\t\t\t*****DANH SACH HOC SINH*****"<<endl;
+		fileOutput<<"DANH SACH RONG"<<endl;
+		fileOutput<<endl;
 	}
 	else{
-		cout<<"\t\t\t\t\t\t*****DANH SACH HOC SINH*****"<<endl;
+		fileOutput<<"\t\t\t\t\t\t*****DANH SACH HOC SINH*****"<<endl;
 		while(temp!=NULL){
-			cout<<"STT:"<<++count<<endl;
-			temp->student.xuat_thong_tin();
-			temp->subject.xuatdiem();
+			fileOutput<<"STT:"<<++count<<endl;
+			temp->student.xuat_thong_tin(fileOutput);
+			temp->subject.xuatdiem(fileOutput);
 			temp=temp->next;
-			cout<<endl;
+			fileOutput<<endl;
 		}
 	}
 }

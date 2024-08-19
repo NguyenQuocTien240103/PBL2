@@ -40,17 +40,6 @@ void Lop::GhiVaoFile(ofstream &fileout)
     fileout << this->TenLop;
 }
 
-// Đọc file
-// void Lop::DocFile(ifstream &filein)
-// {
-//     getline(filein, this->MaLop, ',');
-//     getline(filein, this->TenLop);
-//     if (this->MaLop != "" && this->TenLop != "")
-//     {
-//         cout << "hello";
-//     }
-// }
-
 // Hàm hủy
 Lop::~Lop()
 {

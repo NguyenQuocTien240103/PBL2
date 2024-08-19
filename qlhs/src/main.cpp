@@ -22,8 +22,8 @@ int main()
     for (int i = 0; i < 1; i++)
     {
         lop.DauVao();
-        head->ThemLop(lop, head, 0);
+        head->ThemLop(lop, head);
     }
-    head->ShowAllLop(head, fileName);
+    head->SaveAllLop(head, fileName);
     return 0;
 }

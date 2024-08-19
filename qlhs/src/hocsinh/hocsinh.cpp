@@ -1,10 +1,6 @@
 #include "hocsinh.h"
 HocSinh::HocSinh() {}
 
-void HocSinh::ThemHocSinh(HocSinh newhs)
-{
-}
-// getter
 int HocSinh::GetId()
 {
     return this->Id;
@@ -45,4 +41,19 @@ void HocSinh::SetTenHocSinh(string TenHocSinh)
 void HocSinh::SetNgaySinh(string NgaySinh)
 {
     this->NgaySinh = NgaySinh;
+}
+
+void HocSinh::DauVao()
+{
+    cout << "nhap Id = ";
+    cin >> this->Id;
+    cout << endl
+         << "nhap MaLop = ";
+    cin >> this->MaLop;
+    cout << endl
+         << "nhap TenHocSinh = ";
+    cin >> this->TenHocSinh;
+    cout << endl
+         << "nhap NgaySinh = ";
+    cin >> this->NgaySinh;
 }

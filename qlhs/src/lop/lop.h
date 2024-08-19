@@ -8,7 +8,6 @@ private:
 
 public:
     Lop();
-
     // Getter
     string GetMaLop();
     string GetTenLop();
@@ -22,9 +21,5 @@ public:
 
     // Xuất thông tin lớp ra file
     void GhiVaoFile(ofstream &);
-
-    // Đọc file
-    // void DocFile(ifstream &);
-    // Hàm hủy
     ~Lop();
 };

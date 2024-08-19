@@ -1,4 +1,5 @@
 #include <iostream>
+#include <fstream>
 using namespace std;
 class HocSinh
 {
@@ -10,18 +11,19 @@ private:
 
 public:
     HocSinh();
-    void ShowAllHocSinh();
-    void ThemHocSinh(HocSinh);
-    void SuaHocSinh(HocSinh);
-    void XoaHocSinh(HocSinh);
-    void TimKiemHocSinh(int);
+    // getter
     int GetId();
     string GetMaLop();
     string GetTenHocSinh();
     string GetNgaySinh();
+    // setter
     void SetId(int);
     void SetMaLop(string);
     void SetTenHocSinh(string);
     void SetNgaySinh(string);
+    // Nhập
+    void DauVao();
+    // Xuất thông tin lớp ra file
+    void GhiVaoFile(ofstream &);
     ~HocSinh();
 };

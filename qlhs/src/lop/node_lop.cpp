@@ -4,8 +4,7 @@ Node_Lop::Node_Lop(Lop lop)
     this->lop = lop;
     this->next = nullptr;
 }
-//#
-void Node_Lop::ShowAllLop(Node_Lop *&Head, const string &file_name)
+void Node_Lop::SaveAllLop(Node_Lop *&Head, const string &file_name)
 {
     ofstream fileOutput(file_name); // Mở file output để ghi dữ liệu
 
@@ -16,7 +15,7 @@ void Node_Lop::ShowAllLop(Node_Lop *&Head, const string &file_name)
     }
 
     Node_Lop *temp = Head;
-    int count = 0; // Đếm số thứ tự
+    //    int count = 0; // Đếm số thứ tự
 
     if (temp == NULL)
     {
@@ -34,42 +33,21 @@ void Node_Lop::ShowAllLop(Node_Lop *&Head, const string &file_name)
 
     fileOutput.close(); // Đóng file sau khi hoàn thành ghi dữ liệu
 }
-void Node_Lop::ThemLop(Lop lop, Node_Lop *&Head, int ViTri)
+void Node_Lop::ThemLop(Lop lop, Node_Lop *&Head)
 {
-    if (ViTri == 0) // đầu
+    // luôn luôn thêm vào cuối
+    Node_Lop *new_lop = new Node_Lop(lop);
+    if (Head == NULL)
+        Head = new_lop;
+    else
     {
-        Node_Lop *new_lop = new Node_Lop(lop);
-        if (Head == NULL)
-            Head = new_lop;
-        else
+        Node_Lop *temp = Head;
+        while (temp->next != NULL)
         {
-            new_lop->next = Head;
-            Head = new_lop;
+            temp = temp->next;
         }
+        temp->next = new_lop;
     }
-    else if (ViTri == 1) // cuối
-    {
-        Node_Lop *new_lop = new Node_Lop(lop);
-        if (Head == NULL)
-            Head = new_lop;
-        else
-        {
-            Node_Lop *temp = Head;
-            while (temp->next != NULL)
-            {
-                temp = temp->next;
-            }
-            temp->next = new_lop;
-        }
-    }
-}
-
-void Node_Lop::SuaLop(Lop)
-{
-}
-
-void Node_Lop::XoaLop(string)
-{
 }
 
 void Node_Lop::DocFile(ifstream &filein, Node_Lop *&Head)
@@ -93,7 +71,7 @@ void Node_Lop::DocFile(ifstream &filein, Node_Lop *&Head)
             Lop newLop;
             newLop.SetMaLop(MaLop);
             newLop.SetTenLop(TenLop);
-            ThemLop(newLop, Head, 0); // Thêm vào đầu danh sách
+            ThemLop(newLop, Head); // Thêm vào đầu danh sách
         }
     }
 }

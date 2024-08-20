@@ -8,9 +8,9 @@ public:
 public:
     Node_BangDiem();
     Node_BangDiem(BangDiem);
-    void SaveAllLop(Node_BangDiem *&, const string &);
-    void ThemLop(BangDiem, Node_BangDiem *&);
+    void SaveBangDiem(Node_BangDiem *&, const string &);
+    void ThemBangDiem(BangDiem, Node_BangDiem *&);
     //  Đọc file ( đọc dữ liệu từ database lưu vào cấu trúc dữ liệu linked-list)
-    void DocFile(ifstream &, BangDiem *&);
+    void DocFile(ifstream &, Node_BangDiem *&);
     ~Node_BangDiem();
 };

@@ -1,6 +1,6 @@
 #include "hocsinh.h"
 HocSinh::HocSinh() {}
-
+// getter
 int HocSinh::GetId()
 {
     return this->Id;

@@ -26,7 +26,10 @@ void BangDiem::SetToan(float Toan)
 {
     this->Toan = Toan;
 }
-
+void BangDiem::SetHocSinh(HocSinh hs)
+{
+    this->hs = hs;
+}
 void BangDiem ::DauVao()
 {
     cout << "nhap Id = ";
